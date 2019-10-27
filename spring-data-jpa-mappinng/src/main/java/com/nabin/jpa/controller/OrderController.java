@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nabin.jpa.dto.OrderRequest;
+import com.nabin.jpa.dto.OrderResponse;
 import com.nabin.jpa.entity.Customer;
 import com.nabin.jpa.repository.CustomerRepository;
 import com.nabin.jpa.repository.ProductRepository;
@@ -30,6 +31,11 @@ public class OrderController {
 	@GetMapping("/findAllOrders")
 	public List<Customer> findAllOrders(){
 		return customerRepository.findAll();
+	}
+	
+	@GetMapping("/getInfo")
+	public List<OrderResponse> getJoinInformation(){
+		return customerRepository.getJoinInformation();
 	}
 
 }
