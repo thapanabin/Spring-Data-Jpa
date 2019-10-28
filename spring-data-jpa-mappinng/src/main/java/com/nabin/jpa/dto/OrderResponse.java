@@ -14,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(content = Include.NON_DEFAULT)
+@JsonInclude()
 public class OrderResponse {
 	
 	private String name;
