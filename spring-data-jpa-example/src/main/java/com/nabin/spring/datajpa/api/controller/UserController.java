@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nabin.spring.datajpa.api.model.User;
@@ -37,6 +38,28 @@ public class UserController {
 	@DeleteMapping("/delete/{name}")
 	public List<User> deleteUser(@PathVariable("name") String name){
 		return userService.deleteUser(name);
+	}
+	
+	@GetMapping("/findMultiCondition/{profession}/{age}")
+	public List<User> getUsersByProfessionAndAge(@PathVariable String profession,@PathVariable int age){
+		return userService.findByMultiCondition(profession, age);
+	}
+	
+	@GetMapping("/getUsersIgnoreCase")
+	public List<User> getUserByProfessionIgnoreCase(@RequestParam String profession){
+		
+		return userService.getUsersIgnoreCase(profession);
+		
+	}
+	
+	@GetMapping("/getSort/{field}")
+	public List<User> getSortedUsers(String field){
+		return userService.getUserSort(field);
+	}
+	
+	@GetMapping("/getRecordsByCustomQuery")
+	public List<User> getUsersByCustomQuery(){
+		return userService.getUsersCustomQuery();
 	}
 
 }
