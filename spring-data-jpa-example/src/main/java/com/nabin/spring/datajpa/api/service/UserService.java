@@ -1,5 +1,6 @@
 package com.nabin.spring.datajpa.api.service;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.nabin.spring.datajpa.api.dao.UserRepository;
 import com.nabin.spring.datajpa.api.model.User;
@@ -41,6 +43,7 @@ public class UserService {
 	
 	public List<User> getUserByProfession(String profession){
 		return userRepository.findByProfession(profession);
+		
 	}
 	
 	public long getCountByAge(int age) {
@@ -79,6 +82,7 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	
 //	@GetMapping("/getPaginatedData")
 //	public List<User> getPaginatedRecords(){
