@@ -1,0 +1,30 @@
+#my.greeting = "Hello I'm Greeting you From application file"
+#my.list.values = one,two,three
+#dbValues = {connectionUrl:'http://facebook.com',userName:'nabin',password:'passwd'}
+#db.connection = {connectionUrl:'http://facebook.com',userName:'nabin',password:'passwd'}
+#db.host = 127.0.0.1
+#db.port = 1200
+#
+#management.endpoints.web.exposure.include=* //expose everything
+
+
+# if it is application.yml then 
+#above this line is the content of application.properties file
+
+my:
+  greeting: Hello I'm Greeting you From application file #yml smart enough to know it is string 
+  list:
+     values: one,two,three
+
+dbValues: "{connectionUrl: 'http://facebook.com',userName: 'nabin',password: 'passwd'}"
+
+db: 
+  connection: "{connectionUrl:'http://facebook.com',userName:'nabin',password:'passwd'}"
+  host: 127.0.0.1
+  port: 1200
+
+management.endpoints.web.exposure.include: "*"
+spring:
+  profiles:
+    active: test
+      

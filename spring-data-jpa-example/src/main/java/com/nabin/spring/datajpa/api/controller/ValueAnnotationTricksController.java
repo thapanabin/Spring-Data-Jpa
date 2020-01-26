@@ -3,6 +3,7 @@ package com.nabin.spring.datajpa.api.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +23,11 @@ public class ValueAnnotationTricksController {
 	@Value("#{${dbValues}}")//# after curly braces it will treat as spring expression language spel and evaluate 
 	private Map<String, String> dbVal;
 	
+	@Autowired
+	private DBSettings dbSettings;
 	@GetMapping("/greeting")
 	public String welcome() {
-		return "Hi There Good Evening"+greeting+staticMessage+listOfValues+dbVal;
+		return "Hi There Good Evening"+greeting+staticMessage+listOfValues+dbVal+dbSettings.getConnection()+dbSettings.getHost()+dbSettings.getPort();
 	}
 
 }

@@ -1,0 +1,13 @@
+my:
+  greeting: Hello I'm Greeting you From application file #yml smart enough to know it is string 
+  list:
+     values: one,two,three
+
+dbValues: "{connectionUrl: 'http://facebook.com',userName: 'nabin',password: 'passwd'}"
+
+db: 
+  connection: "{connectionUrl:'http://faceboo',userName:'nabin',password:'passwd'}"
+  host: 127.0.0.1
+  port: 1200
+
+management.endpoints.web.exposure.include: "*"
