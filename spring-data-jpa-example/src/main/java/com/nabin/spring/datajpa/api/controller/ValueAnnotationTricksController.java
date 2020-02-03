@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,14 +21,22 @@ public class ValueAnnotationTricksController {
 	@Value("${my.list.values}")
 	private List<String> listOfValues;
 	
-	@Value("#{${dbValues}}")//# after curly braces it will treat as spring expression language spel and evaluate 
-	private Map<String, String> dbVal;
+//	@Value("#{${dbValues}}")//# after curly braces it will treat as spring expression language spel and evaluate 
+//	private Map<String, String> dbVal;
 	
 	@Autowired
 	private DBSettings dbSettings;
+	
+	@Autowired
+	private Environment env;
 	@GetMapping("/greeting")
 	public String welcome() {
-		return "Hi There Good Evening"+greeting+staticMessage+listOfValues+dbVal+dbSettings.getConnection()+dbSettings.getHost()+dbSettings.getPort();
+		return "Hi There Good Evening"+greeting+staticMessage+listOfValues+dbSettings.getConnection()+dbSettings.getHost()+dbSettings.getPort();
+	}
+	
+	@GetMapping("/envDetails")
+	public String envDetails() {
+		return env.toString();
 	}
 
 }
