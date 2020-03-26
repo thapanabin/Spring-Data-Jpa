@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RefreshScope // for autorefreshing without restarting the server
 public class ValueAnnotationTricksController {
 	//"${my.greeting}"
 	@Value("${my.greeting: default value}")//default value will come in to effect if we dont have anything in the properties file
